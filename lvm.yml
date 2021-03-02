@@ -1,0 +1,29 @@
+- name: example of lvm
+  hosts: all
+  remote_user: sysops
+  become: yes
+  tasks:
+          - name:
+            command: pvcreate  /dev/sdb
+          - name:
+            lvg:
+                    vg: vg_data
+                    pvs: /dev/sdb
+          - name:
+            lvol:
+                    vg: vg_data
+                    lv: lv_data
+                    size: 100%FREE
+
+          - name:
+            filesystem:
+                    fstype: xfs
+                    dev: /dev/vg_data/lv_data
+          - name:
+            mount:
+                    name: /data
+                    src: /dev/vg_data/lv_data
+                    fstype: xfs
+                    state: mounted
+
+

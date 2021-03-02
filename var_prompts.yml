@@ -1,0 +1,20 @@
+---
+ - name: example of var prompts
+   hosts: all
+   remote_user: sysops
+   connection: ssh
+   become: yes
+   vars_prompt:
+           - name: file
+             prompt: "what is the name of the file"
+             private: no
+
+
+   tasks:
+           - name: file
+             file:
+              path: "{{ file }}"
+              dest: /tmp
+              state: touch
+
+

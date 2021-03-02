@@ -1,0 +1,17 @@
+
+ - name: patch
+   hosts: all
+   remote_user: sysops
+   become: yes
+   tasks: 
+   - name: patch servers
+     yum: 
+      name: '*'
+      state: latest
+     when: ansible_distribution ==  "RedHat"  
+   - name: patch2
+     apt:
+      name: '*'
+      state: latest
+     when: ansible_distribution == "Ubuntu"  
+

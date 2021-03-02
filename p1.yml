@@ -1,0 +1,5 @@
+---
+     - name: copy file   
+       copy:
+         src: /home/sysops/mail.yml
+         dest: /home/sysops

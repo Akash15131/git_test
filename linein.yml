@@ -1,0 +1,19 @@
+- name: practice playbook
+  hosts: all
+  remote_user: sysops
+  connection: ssh
+  become: yes
+  tasks:
+          - name: create file
+            file: 
+             path: /tmp/test.txt
+             state: touch
+
+          - name: insert
+            lineinfile:
+                    path: /tmp/test.txt
+                    line: " testing purpose "
+                    state: present
+                    backup: yes
+
+

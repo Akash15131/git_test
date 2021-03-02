@@ -1,0 +1,10 @@
+---
+- name: copy file
+  hosts: all
+  remote_user: sysops
+  become: true
+  tasks:
+    - name: copy
+      copy: 
+       src: /home/sysops/akash_ansible
+       dest: /tmp

@@ -1,0 +1,10 @@
+ - name: example yum
+   hosts: all
+   remote_user: sysops
+   connection: ssh
+   become: yes
+   tasks: 
+    - name: install package
+      yum:
+        name: ntp
+        state: installed

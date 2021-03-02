@@ -1,0 +1,23 @@
+- name: example of hash loop
+  hosts: all
+  remote_user: sysops
+  connection: ssh
+  become: yes
+  tasks:
+          - name: add three groups
+            group: 
+             name: "{{item}}"
+             state: present
+            with_items: 
+                  - infra
+                  - dba
+                  - network
+          - name: add 3 users in 3 groups
+            user: 
+              name: "{{item.x}}"
+              state: present
+              group: "{{item.y}}"
+            with_items:
+                    - { x: 'sakshi' , y: 'infra' }
+                    - { x: 'raj' , y: 'dba' }
+                    - { x: 'samar' , y: 'network' }       

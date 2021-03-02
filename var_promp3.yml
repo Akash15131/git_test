@@ -1,0 +1,24 @@
+---
+ - name: example of commnad module
+   hosts: all
+   remote_user: sysops
+   connection: ssh
+   become: yes
+   vars_prompt:
+          - name: command
+            prompt: type the command
+            private: no
+   tasks:
+          - name: cmd
+            command:
+            command: "{{command}}"
+            register: abc
+
+          - debug: 
+             var: abc.stdout
+          - name: create file
+            copy: 
+              content: "hi\n"
+              dest: /tmp/akash.txt
+            when: abc.stdout == "VMware, Inc."  
+

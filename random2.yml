@@ -1,0 +1,12 @@
+---
+- name: create file
+  hosts: all
+  remote_user: sysops
+  become: yes
+  tasks: 
+   - name: create file
+     file: 
+         path: /tmp/qwerty
+         state: touch
+         owner: akash
+

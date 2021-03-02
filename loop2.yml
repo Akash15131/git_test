@@ -1,0 +1,15 @@
+- name: example of loop
+  hosts: all
+  remote_user: sysops
+  connection: ssh
+  become: yes
+  tasks:
+          - name: install package
+            yum:
+                    name: "{{item}}"
+                    state: present
+
+            with_items:
+                     - http*
+                     - ntp*
+                              

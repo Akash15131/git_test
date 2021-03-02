@@ -1,0 +1,21 @@
+---
+ - name: variable example
+   hosts: all
+   remote_user: sysops
+   connection: ssh
+   become: yes
+   vars: 
+    x: /home/sysops/akash_ansible/p1.yml
+    y: 
+     - httpd
+     - ntp
+     - net-snmp
+   tasks: 
+      - name: copy
+        copy:
+         src: "{{x}}"
+         dest: /tmp
+      - name: install package
+        yum: 
+          name: "{{y}}"
+          state: installed

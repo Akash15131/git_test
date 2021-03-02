@@ -1,0 +1,21 @@
+ - name: propt var
+   hosts: all
+   connection: ssh
+   remote_user: sysops
+   become: true
+   vars_prompt: 
+           - name: username
+             prompt: "what is your name"
+             private: no
+           - name: pw
+             prompt: "what is your password"
+             private: yes
+   tasks: 
+    
+           - name: useradd
+             user: 
+                name: "{{username}}" 
+                state: absent
+                password: "{{pw | password_hash('sha256')}}"        
+
+

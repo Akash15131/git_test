@@ -1,0 +1,17 @@
+---
+ - name: example of yum
+   hosts: all
+   remote_user: sysops
+   connection: ssh
+   become: yes
+   vars: 
+    x: akash
+
+   tasks:
+     - name: file
+       file:
+               path: "{{x}}"
+               dest: /tmp
+               state: directory      
+
+

@@ -1,0 +1,13 @@
+---
+ - hosts: practice
+   connection: ssh
+   remote_user: sysops
+   become: true
+   tasks:
+    - name: file create      
+      file:
+        path: /home/sysops/akash.txt
+        state: touch
+        mode: 0777
+        owner: root
+        group: root

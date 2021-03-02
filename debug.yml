@@ -1,0 +1,7 @@
+---
+ - name: this is example of debug module
+   hosts: practice
+   tasks: 
+   - name: debug 
+     debug: 
+      msg: "welcome to playworld"  

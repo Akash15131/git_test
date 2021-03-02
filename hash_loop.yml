@@ -1,0 +1,14 @@
+- name: list of hash loops
+  hosts: all
+  remote_user: sysops
+  connection: ssh
+  become: yes
+  tasks:
+          - name: copy files
+            copy:
+                    src: "{{ item.x }}"
+                    dest: "{{ item.y }}"
+            with_items:
+                      - { x: '/etc/passwd' ,  y: '/opt' }
+                      - { x: '/etc/ntp.conf' ,  y: '/tmp' }
+

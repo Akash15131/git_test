@@ -1,0 +1,11 @@
+---
+ - hosts: practice
+   connection: ssh
+   remote_user: sysops
+   become: true
+   tasks:
+    - name: fetch file
+      fetch:   
+       src: /home/sysops/mail.yml
+       dest: /tmp
+    -  include_tasks: /home/sysops/akash_ansible/p1.yml
