@@ -1,6 +1,6 @@
 - name: practice playbook
   hosts: all
-  remote_user: sysops
+  remote_user: sysop
   connection: ssh
   become: yes
   tasks:
