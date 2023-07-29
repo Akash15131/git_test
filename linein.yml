@@ -7,7 +7,7 @@
           - name: create file
             file: 
              path: /tmp/test.txt
-             state: touch
+             state: touch11
 
           - name: insert
             lineinfile:
