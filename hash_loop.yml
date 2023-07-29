@@ -1,7 +1,7 @@
 - name: list of hash loops
   hosts: all
   remote_user: sysops
-  connection: ssh
+  connection: ssha
   become: yes
   tasks:
           - name: copy files
